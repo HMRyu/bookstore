@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export type ModalType = 'addBook' | 'editBook' | 'deleteBook'
 
-export interface ModalStore<T = null> {
+export interface ModalStore {
   type: ModalType | null
-  data: T
+  data: any
   isOpen: boolean
-  onOpen: (type: ModalType, data?: T) => void
+  onOpen: (type: ModalType, data?: any) => void
   onClose: () => void
 }

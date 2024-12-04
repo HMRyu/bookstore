@@ -28,9 +28,11 @@ export const columns: ColumnDef<BookListItem>[] = [
   },
   {
     id: 'actions',
-    cell: () => {
+    cell: ({ row }) => {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       const { onOpen } = useModal()
+
+      const bookData = row.original
 
       return (
         <DropdownMenu>
@@ -44,7 +46,11 @@ export const columns: ColumnDef<BookListItem>[] = [
             <DropdownMenuItem onClick={() => onOpen('editBook')}>
               edit quantity
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onOpen('deleteBook')}>
+            <DropdownMenuItem
+              onClick={() => {
+                onOpen('deleteBook', bookData)
+              }}
+            >
               delete
             </DropdownMenuItem>
           </DropdownMenuContent>

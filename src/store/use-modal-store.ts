@@ -4,9 +4,9 @@ import { create } from 'zustand'
 
 const useModal = create<ModalStore>((set) => ({
   type: null,
-  data: null,
+  data: {},
   isOpen: false,
-  onOpen: (type, data) => set({ isOpen: true, type, data }),
+  onOpen: (type, data = {}) => set({ isOpen: true, type, data }),
   onClose: () => set({ type: null, isOpen: false }),
 }))
 
