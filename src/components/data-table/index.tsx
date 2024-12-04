@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import {
   ColumnDef,
   flexRender,
@@ -20,7 +22,7 @@ import {
 } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { useState } from 'react'
+import useModal from '@/store/use-modal-store'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -32,6 +34,8 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [globalFilter, setGlobalFilter] = useState<string>('')
+
+  const { onOpen } = useModal()
 
   const globalFilterFn = (
     row: Row<TData>,
@@ -68,7 +72,13 @@ export function DataTable<TData, TValue>({
           onChange={(event) => table.setGlobalFilter(event.target.value)}
           className="max-w-sm"
         />
-        <Button variant="outline" className="ml-auto">
+        <Button
+          variant="outline"
+          className="ml-auto"
+          onClick={() => {
+            onOpen('addBook')
+          }}
+        >
           Add a book
         </Button>
       </div>

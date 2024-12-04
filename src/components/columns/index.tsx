@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { BookListItem } from '@/schemas/book'
+import useModal from '@/store/use-modal-store'
 
 export const columns: ColumnDef<BookListItem>[] = [
   {
@@ -28,6 +29,9 @@ export const columns: ColumnDef<BookListItem>[] = [
   {
     id: 'actions',
     cell: () => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { onOpen } = useModal()
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -37,8 +41,12 @@ export const columns: ColumnDef<BookListItem>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>edit quantity</DropdownMenuItem>
-            <DropdownMenuItem>delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onOpen('editBook')}>
+              edit quantity
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onOpen('deleteBook')}>
+              delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
