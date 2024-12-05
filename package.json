@@ -39,5 +39,12 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@radix-ui/react-icons": {
+      "react": "$react"
+    },
+    "react": "$react",
+    "react-dom": "$react-dom"
   }
 }
