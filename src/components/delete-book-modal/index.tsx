@@ -28,15 +28,15 @@ export default function DeleteBookModal() {
         </DialogHeader>
         <DialogDescription />
         <DialogFooter>
+          <Button type="submit" variant={'destructive'} onClick={onClose}>
+            취소하기
+          </Button>
           <Button
             type="submit"
             variant={'outline'}
             onClick={() => handleDeleteClick(data.id)}
           >
             삭제하기
-          </Button>
-          <Button type="submit" variant={'destructive'} onClick={onClose}>
-            취소하기
           </Button>
         </DialogFooter>
       </DialogContent>

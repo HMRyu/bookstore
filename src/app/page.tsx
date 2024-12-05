@@ -5,11 +5,11 @@ export default async function Home() {
   const result = await getBooks()
 
   if (result.status === 'success') {
-    const { books, pagination } = result.data
+    const { books } = result.data
     return (
       <div>
         <h1>Book List</h1>
-        <BookList books={books} pagination={pagination} />
+        <BookList books={books} />
       </div>
     )
   } else {
