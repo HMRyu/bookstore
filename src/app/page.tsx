@@ -6,12 +6,7 @@ export default async function Home() {
 
   if (result.status === 'success') {
     const { books } = result.data
-    return (
-      <div>
-        <h1>Book List</h1>
-        <BookList books={books} />
-      </div>
-    )
+    return <BookList books={books} />
   } else {
     throw new Error(result.error)
   }

@@ -9,7 +9,7 @@ export const bookListItemSchema = z.object({
   salesVolume: z
     .number()
     .int()
-    .min(0, 'Sales volume cannot be negative')
+    .min(0, '올바른 숫자를 입력해주세요.')
     .default(0),
 })
 
@@ -24,7 +24,7 @@ export type GetBooksResponse = z.infer<typeof getBooksResponseSchema>
 export const bookInputFormSchema = z.object({
   title: z.string().min(1, '제목은 필수 입력 사항입니다.'),
   author: z.string().min(1, '저자는 필수 입력 사항입니다.'),
-  subject: z.string().min(1, 'Subject is 주제는 필수 입력 사항입니다.'),
+  subject: z.string().min(1, '주제는 필수 입력 사항입니다.'),
   quantity: z.number().int().min(0, '올바른 숫자를 입력해주세요.'),
 })
 
