@@ -6,6 +6,7 @@ export default async function Home() {
 
   if (result.status === 'success') {
     const { books } = result.data
+
     return <BookList books={books} />
   } else {
     throw new Error(result.error)
