@@ -23,13 +23,14 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import useModal from '@/store/use-modal-store'
+import Link from 'next/link'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
 
-export function DataTable<TData, TValue>({
+export function DataTable<TData extends { id: string }, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -67,7 +68,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter titles and authors..."
+          placeholder="제목과 저자로 검색해보세요"
           value={table.getState().globalFilter ?? ''}
           onChange={(event) => table.setGlobalFilter(event.target.value)}
           className="max-w-sm"
@@ -79,7 +80,7 @@ export function DataTable<TData, TValue>({
             onOpen('addBook')
           }}
         >
-          Add a book
+          책 추가하기
         </Button>
       </div>
       <div className="rounded-md border">
@@ -111,10 +112,12 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
+                      <Link href={`/books/${row.original.id}`}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </Link>
                     </TableCell>
                   ))}
                 </TableRow>
@@ -139,7 +142,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          이전 페이지
         </Button>
         <Button
           variant="outline"
@@ -147,7 +150,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          다음 페이지
         </Button>
       </div>
     </div>

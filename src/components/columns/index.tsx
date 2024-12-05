@@ -16,15 +16,15 @@ import useModal from '@/store/use-modal-store'
 export const columns: ColumnDef<BookListItem>[] = [
   {
     accessorKey: 'title',
-    header: 'Title',
+    header: '제목',
   },
   {
     accessorKey: 'author',
-    header: 'Author',
+    header: '저자',
   },
   {
     accessorKey: 'quantity',
-    header: 'Quantity',
+    header: '수량',
   },
   {
     id: 'actions',
@@ -44,14 +44,14 @@ export const columns: ColumnDef<BookListItem>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => onOpen('editBook', bookData)}>
-              edit
+              수정하기
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
                 onOpen('deleteBook', bookData)
               }}
             >
-              delete
+              삭제하기
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
