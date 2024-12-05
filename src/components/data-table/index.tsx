@@ -1,16 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  Row,
-  useReactTable,
-} from '@tanstack/react-table'
+import Link from 'next/link'
 
 import {
   Table,
@@ -23,7 +14,16 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import useModal from '@/store/use-modal-store'
-import Link from 'next/link'
+
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  Row,
+  useReactTable,
+} from '@tanstack/react-table'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
