@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { useForm } from 'react-hook-form'
-import { AddBookForm, addBookFormSchema } from '@/schemas/book'
+import { BookInputForm, bookInputFormSchema } from '@/schemas/book'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { addBook } from '@/actions/add-book'
 
@@ -26,8 +26,8 @@ export default function AddBookModal() {
   const { isOpen, onClose, type } = useModal()
   const isModalOpen = isOpen && type === 'addBook'
 
-  const form = useForm<AddBookForm>({
-    resolver: zodResolver(addBookFormSchema),
+  const form = useForm<BookInputForm>({
+    resolver: zodResolver(bookInputFormSchema),
     defaultValues: {
       title: '',
       author: '',
@@ -36,7 +36,7 @@ export default function AddBookModal() {
     },
   })
 
-  const onSubmit = async (data: AddBookForm) => {
+  const onSubmit = async (data: BookInputForm) => {
     const result = await addBook(data)
 
     if (result.status === 'success') {

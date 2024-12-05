@@ -21,11 +21,11 @@ export const getBooksResponseSchema = z.object({
 
 export type GetBooksResponse = z.infer<typeof getBooksResponseSchema>
 
-export const addBookFormSchema = z.object({
+export const bookInputFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
   author: z.string().min(1, 'Author is required'),
   subject: z.string().min(1, 'Subject is required'),
   quantity: z.number().int().min(0, 'Quantity cannot be negative'),
 })
 
-export type AddBookForm = z.infer<typeof addBookFormSchema>
+export type BookInputForm = z.infer<typeof bookInputFormSchema>

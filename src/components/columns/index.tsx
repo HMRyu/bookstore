@@ -43,8 +43,8 @@ export const columns: ColumnDef<BookListItem>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => onOpen('editBook')}>
-              edit quantity
+            <DropdownMenuItem onClick={() => onOpen('editBook', bookData)}>
+              edit
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={() => {
