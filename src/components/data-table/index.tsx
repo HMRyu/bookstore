@@ -112,12 +112,19 @@ export function DataTable<TData extends { id: string }, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      <Link href={`/books/${row.original.id}`}>
-                        {flexRender(
+                      {cell.column.id === 'title' ? (
+                        <Link href={`/books/${row.original.id}`}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </Link>
+                      ) : (
+                        flexRender(
                           cell.column.columnDef.cell,
                           cell.getContext()
-                        )}
-                      </Link>
+                        )
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>

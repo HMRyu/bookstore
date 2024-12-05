@@ -122,10 +122,7 @@ export default function EditBookModal() {
                   <FormControl>
                     <Input
                       {...field}
-                      onChange={(e) => {
-                        const value = e.target.value
-                        field.onChange(value ? Number(value) : 0)
-                      }}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormMessage />

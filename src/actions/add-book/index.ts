@@ -3,10 +3,10 @@
 import { revalidatePath } from 'next/cache'
 
 import { ActionResult } from '../action-result'
-import { AddBookForm } from '@/schemas/book'
+import { BookInputForm } from '@/schemas/book'
 
 export const addBook = async (
-  bookInfo: AddBookForm
+  bookInfo: BookInputForm
 ): Promise<ActionResult<null>> => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
