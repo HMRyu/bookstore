@@ -1,6 +1,8 @@
 # bookstore
 
 ## 실행 방법
+배포 주소 : https://bookstore-six-chi.vercel.app
+
 ```
 git clone https://github.com/HMRyu/bookstore.git
 ```
